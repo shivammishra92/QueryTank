@@ -1,0 +1,17 @@
+.query-index {
+    /* min-width: fit-content; */
+    display: flex;
+    min-height: 85vh;
+  }
+  
+  .query-index-content {
+    display: flex;
+    width: 50%;
+    justify-content: right;
+  }
+  .main-content{
+    display: flex;
+    width: 250%;
+    justify-content: left;
+  }
+
