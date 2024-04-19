@@ -29,8 +29,11 @@
     color: #fff;
     border: 2px solid #007cd446;
     outline: none;
-    border-radius: 3px;
+    border-radius: 7px;
     cursor: pointer;
+  }
+  button:hover{
+    background-color: #196ba6;
   }   
   .main-desc {
     display: flex;
@@ -52,7 +55,7 @@
     display: flex;
     border: 1px solid rgba(0, 0, 0, 0.4);
     margin-right: 20px;
-    border-radius: 3px;
+    border-radius: 7px;
     flex-direction: row;
   }
   .main-tab {
@@ -71,16 +74,18 @@
     /* font-size: 15px; */
     background-color:  #f0f0f0;
   }
-  .main-filter-item {
+  .main-filter-icon {
     display: flex;
     padding: 5px;
     border: 1px solid #0095ff;
-    border-radius: 3px;
-    background-color: #00ccff17;
+    border-radius: 7px;
     font-size: small;
     align-items: center;
     color: #007cd4;
     cursor: pointer;
+  }
+  .main-filter-icon:hover{
+    background-color: #00ccff17;
   }
   .questions {
     display: flex;

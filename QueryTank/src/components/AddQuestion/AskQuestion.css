@@ -1,0 +1,103 @@
+.add-question {
+    background-image: url('https://cdn.sstatic.net/Img/ask/background.svg?v=c56910988bdf');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-attachment: fixed;
+    background-size:auto;
+    display: flex;
+    width: 100%;
+    background-color: rgba(238, 238, 238, 0.568);
+    height: 100vh;
+    /* float: left; */
+    justify-content: space-evenly;
+  }
+  .add-question-container {
+    padding: 30px 15px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 800px;
+    position:relative;
+  }
+  .head-title {
+    display: flex;
+    width: 100%;
+  }
+  
+  .head-title  h1 {
+    margin-bottom: 20px;
+    font-weight: 800;
+    font-size: 30px;
+  }
+  .question-container {
+    display: flex;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 0.5px solid #9b9797;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+      0 6px 20px 0 rgba(66, 42, 42, 0.19);
+      border-radius: 7px;
+  }
+  .question-options {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .question-option {
+    /* display: flex; */
+    flex-direction: column;
+    width: 100%;
+  }
+  .title {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0px;
+    font-size: 1rem;
+  }
+  .title  h3 {
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: 700;
+  }
+  .title  small {
+    color: rgba(30, 30, 30, 0.8);
+  }
+  
+  .title  input {
+    margin: 5px 0px;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 7px;
+    outline: none;
+  }
+  .title  input::placeholder {
+    color: #cecece;
+  }
+  .title  input:focus {
+    border: 1px solid #7ca3f3;
+    box-shadow: 0 4px 7px 0 #9b9797, 0 1px 1px 0 #9b9797;
+  }
+  .quill {
+    height: 100%;
+  }
+  
+  .react-quill {
+    margin: 10px 0px;
+    border-radius: 7px;
+    /* height: 100%; */
+  }
+  
+.ql-editor {
+    height: 200px;
+  }
+  .button {
+    display: flex;
+    justify-content: center;
+    max-width: fit-content;
+    margin: 10px 0px;
+  }
+  
+  button:hover {
+    /* background-color: #053086; */
+    background-color: #196ba6;
+  }
+  

@@ -5,17 +5,20 @@
     border-right: 2px solid #ddd;
     flex: 0.5;
     max-width: 200px;
-    /* position: sticky; */
   }
   .sidebar-container {
     margin: 10px 0px;
     display: flex;
     width: 100%;
+    height: max-content;
+    position: sticky;
+    top:11vh; 
   }
   .sidebar-options {
     display: flex;
     flex-direction: column;
     width: 200px;
+    position: sticky;
   }
   .sidebar-option {
     display: flex;

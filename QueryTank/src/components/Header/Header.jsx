@@ -3,6 +3,7 @@ import './css/Header.css'
 import SearchIcon from '@mui/icons-material/Search';
 import InboxIcon from '@mui/icons-material/Inbox';
 import { Avatar } from '@mui/material'
+import { Link } from 'react-router-dom';
 
 
 
@@ -13,7 +14,11 @@ function Header() {
         <div className='header-container'>
 
           <div className="header-left">
-              <img src="https://purepng.com/public/uploads/large/amazon-logo-s3f.png" alt="logo" />
+            <Link to="/">
+              <img 
+              src="https://purepng.com/public/uploads/large/amazon-logo-s3f.png" 
+              alt="logo" />
+            </Link>
               <h3>About</h3>
           </div>
 

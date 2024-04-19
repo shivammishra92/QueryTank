@@ -6,8 +6,8 @@
   
   .query-index-content {
     display: flex;
-    width: 50%;
-    justify-content: right;
+    width: 80%;
+    justify-content: space-evenly;
   }
   .main-content{
     display: flex;

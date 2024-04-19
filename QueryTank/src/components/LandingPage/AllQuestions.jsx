@@ -1,7 +1,7 @@
 import React from 'react'
 import './css/AllQuestions.css'
 import { Avatar } from '@mui/material'
-import {Link} from '@mui/material'
+import {Link} from 'react-router-dom'
 
 function AllQuestions() {
   return (
@@ -13,12 +13,12 @@ function AllQuestions() {
 
               <div className="all-option">
                 <p>0</p>
-                <span>Votes</span>
+                <span>votes</span>
               </div>
 
               <div className="all-option">
                 <p>1</p>
-                <span>Answers</span>
+                <span>answers</span>
               </div>
 
               <div className="all-option">
@@ -31,8 +31,8 @@ function AllQuestions() {
         {/* middle part */}
         <div className="qNa-bar">
               <Link>This is the que title</Link>
-
-              <div>//div for que description
+              {/* div for que description */}
+              <div>
                 Lorem ipsum dolor sit amet 
                 consectetur adipisicing elit. 
                 Pariatur illum, recusandae quis
@@ -53,7 +53,8 @@ function AllQuestions() {
           <small>Timestamp</small>
           <div className="author-details">
             <Avatar />
-            <p>UserName</p> //for username
+            {/* //for username */}
+            <p>UserName</p> 
           </div>
         </div>
 
