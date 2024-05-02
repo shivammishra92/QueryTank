@@ -12,7 +12,7 @@
     width: 100%;
     height: max-content;
     position: sticky;
-    top:11vh; 
+    top:13vh; 
   }
   .sidebar-options {
     display: flex;
@@ -41,11 +41,12 @@
   .link {
     display: flex;
     flex-direction: column;
+    /* width: 99.9%; */
   }
   .link-tag {
     display: flex;
     align-items: center;
-    padding: 5px 0;
+    padding: 7px 0;
     width: 99.9%;
     color: #000;
     
@@ -59,8 +60,15 @@
   .link-tag > .MuiSvgIcon-root {
     font-size: 22px;
     margin-right: 5px;
-    color: rgb(245, 162, 9);
+    color: black
   }
+  /* .link > .link-tag > a{
+    display: flex;
+    align-items: center;
+    padding: 7px 0;
+    width: 100%;
+    /* color: #000; */
+  
   .tags {
     display: flex;
     flex-direction: column;

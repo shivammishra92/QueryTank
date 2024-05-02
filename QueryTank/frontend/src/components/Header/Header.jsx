@@ -16,10 +16,12 @@ function Header() {
           <div className="header-left">
             <Link to="/">
               <img 
-              src="https://purepng.com/public/uploads/large/amazon-logo-s3f.png" 
+              src='./src/images/query-tankNew.png'
               alt="logo" />
             </Link>
               <h3>About</h3>
+              <h3>Product</h3>
+              <h3>Contact Us</h3>
           </div>
 
           <div className="header-middle">

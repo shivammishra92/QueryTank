@@ -30,7 +30,10 @@ function AllQuestions() {
         
         {/* middle part */}
         <div className="qNa-bar">
-              <Link>This is the que title</Link>
+              <div className='link'>
+                <Link to='/question'>This is the que title</Link>
+              </div>
+              
               {/* div for que description */}
               <div>
                 Lorem ipsum dolor sit amet 
