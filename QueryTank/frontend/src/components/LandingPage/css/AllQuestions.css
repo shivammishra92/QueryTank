@@ -14,10 +14,16 @@
     margin-left: 10px;
     margin-right: -10px;
 }
-.individual-question-container:hover{
+.individual-question:hover{
+  background-color: rgb(255, 248, 235);
+  border-radius: 7px;
+  padding: 2 rem;
+}
+/* .individual-question-container:hover{
 background-color: rgb(255, 248, 235);
 border-radius: 7px;
-}
+padding: 2 rem;
+} */
 .left-bar{
     display: flex;
     margin-left: 40px;
