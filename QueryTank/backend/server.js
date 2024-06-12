@@ -65,7 +65,7 @@ app.get("*", (req, res) => {
 
 //cors
 
-app.use(cors());
+app.use(cors())
 
 //app listen
 app.listen(PORT, () => {

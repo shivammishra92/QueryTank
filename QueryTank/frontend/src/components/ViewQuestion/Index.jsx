@@ -6,6 +6,7 @@ import MainQuestion from './MainQuestion'
 
 
 function Index() {
+
   return (
     <>
     <Header/>

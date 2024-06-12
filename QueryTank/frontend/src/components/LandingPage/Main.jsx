@@ -5,7 +5,7 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import AllQuestions from './AllQuestions';
 import './css/Main.css'
 
-function Main() {
+function Main({questions}) {
   return (
     <div className="main">
       <div className="main-container">
@@ -18,7 +18,7 @@ function Main() {
         </div>
 
         <div className="main-desc">
-          <p>question stats</p>
+          <p>{questions && questions.length} Questions</p>
           <div className="main-filter">
             <div className="main-tabs">
               <div className="main-tab">
@@ -39,14 +39,19 @@ function Main() {
         </div>
 
         <div className="all-questions">
-          <div className="question">
-            <AllQuestions />
-            <AllQuestions />
-            <AllQuestions />
-            <AllQuestions />
-            <AllQuestions />
-            
-          </div>
+          {
+            questions?.map((question,index)=>{
+              return(
+              <>
+                 <div key={index} className="question">
+                   <AllQuestions 
+                    data = {question}
+                    questions = "Hello" /> 
+                 </div>
+              </>
+            )}
+            )
+            }
         </div>
 
       </div>

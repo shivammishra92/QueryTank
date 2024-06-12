@@ -10,7 +10,7 @@ import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import './css/Index.css'
 
-
+// code for each individual question page where its complete information is shown along with answer and comments
 function MainQuestion() {
     const [show,setShow] = useState(false)
     const [showans,setShowans] = useState(false)

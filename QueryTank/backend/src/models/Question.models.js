@@ -3,7 +3,8 @@ import mongoose from "mongoose";
 const questionSchema = new mongoose.Schema({
     title: String,
     body: String,
-    tags: [],
+    tags: [
+        {type:String}],
     createdAt: {
         type: Date,
         default: Date.now()

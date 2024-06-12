@@ -2,8 +2,34 @@ import React from 'react'
 import './css/AllQuestions.css'
 import { Avatar } from '@mui/material'
 import {Link} from 'react-router-dom'
+// import ReactHtmlParser from "react-html-parser"
 
-function AllQuestions() {
+
+function AllQuestions({data}) {
+
+  function truncate(str, n) {
+    return str?.length > n ? str.substr(0, n - 1) + " ..." : str;
+  }
+  
+  const tags = [];
+  //let tags = JSON.parse(data?.tags[0] ? data?.tags[0] : [{tags:["hello"]}]);
+  //  let tags;
+  // try {
+  //   if (data?.tags && Array.isArray(data.tags) && data.tags[0]) {
+  //     tags = JSON.parse(data.tags[0]);
+  //   } else {
+  //     throw new Error("Invalid input data");
+  //   }
+  // } catch (error) {
+  //   console.error("Failed to parse tags:", error.message);
+  //   tags = []; // Default to an empty array or handle the error as needed
+  // }
+
+  // // Proceed with using 'tags'
+  // console.log(tags);
+  // console.log(questions)
+
+
   return (
     <div className="individual-question">
       <div className="individual-question-container">
@@ -31,33 +57,40 @@ function AllQuestions() {
         {/* middle part */}
         <div className="qNa-bar">
               <div className='link'>
-                <Link to='/question'>This is the que title</Link>
+                <Link to={`/question ? q = ${data?._id}`}>
+                  {data?.title ? data?.title : "Title Not found"}
+                </Link>
               </div>
               
               {/* div for que description */}
               <div>
-                Lorem ipsum dolor sit amet 
-                consectetur adipisicing elit. 
-                Pariatur illum, recusandae quis
-                corporis veritatis aperiam nam
-                  quibusdam esse quo delectus,
-                  expedita omnis accusamus ipsam.
+                {/* {ReactHtmlParser(truncate(data.body, 200))} */}
+                {data?.body ? data?.body : "No body"}
               </div>
 
               <div >
-                <span className="question-tag">React</span>
-                <span className="question-tag">Redux</span>
-                <span className="question-tag">Javascript</span>
+              {tags.map((_tag) => (
+              <p
+                style={{
+                  margin: "10px 5px",
+                  padding: "5px 10px",
+                  backgroundColor: "#007cd446",
+                  borderRadius: "3px",
+                }}
+              >
+                {_tag}
+              </p>
+            ))}
               </div>
         </div>
 
         {/* right-bottom part */}
         <div className="author">
-          <small>Timestamp</small>
+          <small>{new Date(data?.createdAt).toLocaleString()}</small>
           <div className="author-details">
             <Avatar />
             {/* //for username */}
-            <p>UserName</p> 
+            <p>{data?.user?.displayName ? data?.user?.displayName : "Anonymous"}</p> 
           </div>
         </div>
 

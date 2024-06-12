@@ -5,19 +5,22 @@ import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import { TagsInput } from "react-tag-input-component";
 import './AskQuestion.css'
-import {useSelector} from "react-redux"
+//import {useSelector} from "react-redux"
+//import { selectUser } from "../../feature/userSlice";
 import axios from "axios"
-import { useHistory } from "react-router-dom"
+import { useNavigate } from 'react-router-dom'
 
 
-const user = useSelector(selectUser);
+
+function AskQuestion() {
+//const user = useSelector(selectUser);
 
 const[title,setTitle] = useState("")
 const[body,setBody] = useState("")
 const[tag,setTag] = useState([])
 const[loading,setLoading] = useState(false)
 
-const history = useHistory()
+const navigate = useNavigate()
 const handleQuill = (value) => {
       setBody(value)
 }
@@ -28,7 +31,7 @@ const handleSubmit = async (e)=> {
     if(title !== "" && body !== ""){
         setLoading(true);
         const bodyJson = {
-            title:tile,
+            title:title,
             body:body,
             tag:JSON.stringify(tag),
             user:user
@@ -39,17 +42,16 @@ const handleSubmit = async (e)=> {
         .then((res)=>{
             setLoading(false);
             alert("Question added successfully")
-            history.push("/")
+            navigate("/")
         })
         .catch((error)=>{
             setLoading(false);
             console.log(error)
         })
     }
-
 }
 
-function AskQuestion() {
+
     return (
         <>
             <Header />
