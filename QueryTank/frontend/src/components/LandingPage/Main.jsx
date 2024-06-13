@@ -44,9 +44,7 @@ function Main({questions}) {
               return(
               <>
                  <div key={index} className="question">
-                   <AllQuestions 
-                    data = {question}
-                    questions = "Hello" /> 
+                   <AllQuestions  data = {question}/> 
                  </div>
               </>
             )}

@@ -2,7 +2,7 @@ import React from 'react'
 import './css/AllQuestions.css'
 import { Avatar } from '@mui/material'
 import {Link} from 'react-router-dom'
-// import ReactHtmlParser from "react-html-parser"
+import ReactHtmlParser from "html-react-parser"
 
 
 function AllQuestions({data}) {
@@ -64,8 +64,8 @@ function AllQuestions({data}) {
               
               {/* div for que description */}
               <div>
-                {/* {ReactHtmlParser(truncate(data.body, 200))} */}
-                {data?.body ? data?.body : "No body"}
+                {ReactHtmlParser(truncate(data?.body, 200))}
+                {/* {data?.body ? data?.body : "No body"} */}
               </div>
 
               <div >

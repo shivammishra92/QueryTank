@@ -29,23 +29,24 @@ const handleSubmit = async (e)=> {
     e.preventDefault()
 
     if(title !== "" && body !== ""){
-        setLoading(true);
+        setLoading(true)
         const bodyJson = {
             title:title,
             body:body,
             tag:JSON.stringify(tag),
-            user:user
+            //user:user
         }
 
         await axios
-        .post('/api/question',bodyJson)
+        .post('http://localhost:5000/api/question',bodyJson)
         .then((res)=>{
-            setLoading(false);
+            setLoading(false)
+            console.log(res.data)
             alert("Question added successfully")
             navigate("/")
         })
         .catch((error)=>{
-            setLoading(false);
+            setLoading(false)
             console.log(error)
         })
     }
