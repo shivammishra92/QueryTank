@@ -14,7 +14,7 @@ const router = createBrowserRouter(
     <Route  >
       <Route path='/' element={<Layout />} />
       <Route path='/ask-question' element={<AskQuestion />} />
-      {/* Index -> routing to the individual question page */}
+      {/* Index(inside view quetion) -> routing to the individual question page */}
       <Route path='/question' element={<Index />} /> 
     </Route>
   )

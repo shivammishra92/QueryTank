@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import Header from '../Header/Header'
 import Sidebar from '../LandingPage/Sidebar'
 import {Link} from 'react-router-dom'
@@ -9,11 +9,33 @@ import ReactQuill from 'react-quill'
 //using react-quill's css
 import 'react-quill/dist/quill.snow.css'
 import './css/Index.css'
+import axios from 'axios'
 
 // code for each individual question page where its complete information is shown along with answer and comments
 function MainQuestion() {
+    //use state for showing-not showing comments
     const [show,setShow] = useState(false)
     const [showans,setShowans] = useState(false)
+
+    const [questionData,setQuestionData] = useState()
+    let search = window.location.search
+    const params = new URLSearchParams(search)
+    const id = params.get("q")
+    console.log(id)
+    
+    useEffect(()=>{
+        async function getQuestionDetails(){
+            await axios.get(`/api/question/${id}`)
+            .then((res)=>{
+                console.log(res.data[0])
+                setQuestionData[res.data[0]]
+            })
+            .catch((error)=>{
+                console.log("error showing individual question")
+            })
+        }
+        getQuestionDetails()
+    },[id])
 
     return (
         <>
@@ -21,7 +43,7 @@ function MainQuestion() {
                 <div className="main-container">
 
                     <div className="main-top">
-                        <h2>Question Title</h2>
+                        <h2>{questionData?.title ? questionData?.title : "No Title"}</h2>
                         <Link to='/ask-question'>
                             <button>Ask Question</button>
                         </Link>

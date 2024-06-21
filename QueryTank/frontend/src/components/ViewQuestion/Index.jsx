@@ -2,7 +2,7 @@ import React from 'react'
 import './css/Index.css'
 import Sidebar from '../LandingPage/Sidebar'
 import {Header} from '../LandingPage/ind'
-import MainQuestion from './MainQuestion'
+import MainQuestion from './MainQuestion'// view-question ka mainQuestion
 
 
 function Index() {

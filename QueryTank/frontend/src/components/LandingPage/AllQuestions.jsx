@@ -12,11 +12,12 @@ function AllQuestions({data}) {
   }
   
   const tags = [];
-  //let tags = JSON.parse(data?.tags[0] ? data?.tags[0] : [{tags:["hello"]}]);
+  //let tags = JSON.parse(data?.tags[0]);
+
   //  let tags;
   // try {
   //   if (data?.tags && Array.isArray(data.tags) && data.tags[0]) {
-  //     tags = JSON.parse(data.tags[0]);
+  //     tags = (data.tags);
   //   } else {
   //     throw new Error("Invalid input data");
   //   }
@@ -25,8 +26,8 @@ function AllQuestions({data}) {
   //   tags = []; // Default to an empty array or handle the error as needed
   // }
 
-  // // Proceed with using 'tags'
-  // console.log(tags);
+  // Proceed with using 'tags'
+  //console.log(tags);
   // console.log(questions)
 
 
@@ -57,7 +58,7 @@ function AllQuestions({data}) {
         {/* middle part */}
         <div className="qNa-bar">
               <div className='link'>
-                <Link to={`/question ? q = ${data?._id}`}>
+                <Link to={`/question?q=${data?._id}`}>
                   {data?.title ? data?.title : "Title Not found"}
                 </Link>
               </div>
