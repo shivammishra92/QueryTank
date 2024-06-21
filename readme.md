@@ -1,6 +1,6 @@
 # QueryTank
 
-QueryTank is Q/A website designed to cater the needs of the individuals who are interested in helping  each other by asking and answering the questions.
+QueryTank is a Q/A website designed to cater the needs of the individuals who are interested in helping  each other by asking and answering the questions.
 
 ## Features
 
