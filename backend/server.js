@@ -26,6 +26,7 @@ db_connect()
 
 app.use(bodyParser.json({ limit: "500mb" }));
 app.use(bodyParser.urlencoded({ extended: true, limit: "500mb" }));
+app.use(cors());
 
 
 
@@ -65,7 +66,7 @@ app.get("*", (req, res) => {
 
 //cors
 
-app.use(cors())
+// app.use(cors())
 
 //app listen
 app.listen(PORT, () => {

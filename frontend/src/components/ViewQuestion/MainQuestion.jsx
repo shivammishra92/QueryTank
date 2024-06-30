@@ -17,7 +17,7 @@ function MainQuestion() {
     const [show,setShow] = useState(false)
     const [showans,setShowans] = useState(false)
 
-    const [questionData,setQuestionData] = useState()
+    const [questionData,setQuestionData] = useState("")
     let search = window.location.search
     const params = new URLSearchParams(search)
     const id = params.get("q")
@@ -27,8 +27,8 @@ function MainQuestion() {
         async function getQuestionDetails(){
             await axios.get(`/api/question/${id}`)
             .then((res)=>{
-                console.log(res.data[0])
-                setQuestionData[res.data[0]]
+                console.log(res.data)
+                setQuestionData(res.data)
             })
             .catch((error)=>{
                 console.log("error showing individual question")
@@ -36,6 +36,8 @@ function MainQuestion() {
         }
         getQuestionDetails()
     },[id])
+
+    console.log(questionData);
 
     return (
         <>
