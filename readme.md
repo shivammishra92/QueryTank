@@ -12,7 +12,7 @@ QueryTank is a Q/A website designed to cater the needs of the individuals who ar
 
 ## Technologies Used
 
-- **Frontend**: React, Redux, CSS
+- **Frontend**: React.js, CSS
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB
 - **Authentication**: JWT (JSON Web Tokens)

@@ -34,7 +34,9 @@ function MainQuestion() {
                 console.log("error showing individual question")
             })
         }
+
         getQuestionDetails()
+        
     },[id])
 
     console.log(questionData);
