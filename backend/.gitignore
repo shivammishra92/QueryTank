@@ -1,5 +1,3 @@
 node_modules
 package-lock.json
 .env
-PORT = 5000
-MONGODB_URI = mongodb+srv://shivam:1234@querytankcluster.92kp8hi.mongodb.net
