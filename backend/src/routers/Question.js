@@ -102,7 +102,8 @@ router.get("/:id", (req, res) => {
           console.log("Error: ", e);
           res.status(400).send({ error: "An error occurred while fetching the question details" });
       });
-  } catch (err) {
+  }
+   catch (err) {
       res.status(400).send({
           message: "Question not found",
       });
