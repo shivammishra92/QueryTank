@@ -32,9 +32,20 @@ router.post('/',async(req,res)=>{
 
 //aggregation pipeline...
 
-router.get("/:id", (req, res) => {
+router.get("/:id", async (req, res) => {
+
+  
   try {
+      const id = req.params.id;
+      // console.log(id)
+      const question = await Questions.findById(id)
+      // console.log(question._id)
+      const questionId = question._id
+
       Questions.aggregate([
+          {
+            $match: { _id: questionId}
+          },
           {
               $lookup: {
                   from: "answers",
@@ -44,59 +55,31 @@ router.get("/:id", (req, res) => {
               },
           },
           {
-              $unwind: {
-                  path: "$answerDetails",
-                  preserveNullAndEmptyArrays: true,
-              },
+            $project: {
+              _id: 1,
+              title: 1,
+              body: 1,
+              "answerDetails.answer": 1,
+              "answerDetails.body": 1,
+              "answerDetails.tags": 1,
+              "answerDetails.createdAt": 1,
+              "answerDetails.user": 1,
+              "answerDetails.commentId": 1
+            },
           },
-          {
-              $lookup: {
-                  from: "comments",
-                  let: { answerId: "$answerDetails._id" },
-                  pipeline: [
-                      {
-                          $match: {
-                              $expr: {
-                                  $eq: ["$questionId", "$$answerId"],
-                              },
-                          },
-                      },
-                      {
-                          $project: {
-                              _id: 1,
-                              comment: 1,
-                              user: 1,
-                              createdAt: 1,
-                          },
-                      },
-                  ],
-                  as: "answerDetails.comments",
-              },
-          },
-          {
-              $group: {
-                  // _id: "$_id",
-                  title: { $first: "$title" },
-                  body: { $first: "$body" },
-                  tags: { $first: "$tags" },
-                  createdAt: { $first: "$createdAt" },
-                  user: { $first: "$user" },
-                  answerDetails: { $push: "$answerDetails" },
-                  
-              },
-          },
-          {
-              $project: {
-                  __v: 0,
-              },
-          },
+          // {
+          //     $unwind: {
+          //         path: "$answerDetails",
+          //         preserveNullAndEmptyArrays: true,
+          //     },
+          // },
       ])
       .exec()
-      .then((questionDetails) => {
-          if (questionDetails.length === 0) {
+      .then((answerDetails) => {
+          if (answerDetails.length === 0) {
               return res.status(404).send({ message: "Question not found" });
           }
-          res.status(200).send(questionDetails[0]);
+          res.status(200).send(answerDetails[0]);
       })
       .catch((e) => {
           console.log("Error: ", e);
@@ -109,99 +92,19 @@ router.get("/:id", (req, res) => {
       });
   }
 });
-
-
-
-
-
-
   
-  router.get("/", async (req, res) => {
-    const error = {
-      message: "Error in retrieving questions",
-      error: "Bad request",
-    };
-  
-    Questions.aggregate([
-      {
-        $lookup: {
-          from: "comments",
-          let: { question_id: "$_id" },
-          pipeline: [
-            {
-              $match: {
-                $expr: {
-                  $eq: ["$question_id", "$$question_id"],
-                },
-              },
-            },
-            {
-              $project: {
-                _id: 1,
-                // user_id: 1,
-                comment: 1,
-                createdAt: 1,
-                // question_id: 1,
-              },
-            },
-          ],
-          as: "comments",
-        },
-      },
-      {
-        $lookup: {
-          from: "answers",
-          let: { question_id: "$_id" },
-          pipeline: [
-            {
-              $match: {
-                $expr: {
-                  $eq: ["$question_id", "$$question_id"],
-                },
-              },
-            },
-            {
-              $project: {
-                _id: 1,
-                // user_id: 1,
-                // answer: 1,
-                // created_at: 1,
-                // question_id: 1,
-                // created_at: 1,
-              },
-            },
-          ],
-          as: "answerDetails",
-        },
-      },
-      // {
-      //   $unwind: {
-      //     path: "$answerDetails",
-      //     preserveNullAndEmptyArrays: true,
-      //   },
-      // },
-      {
-        $project: {
-          __v: 0,
-          // _id: "$_id",
-          // answerDetails: { $first: "$answerDetails" },
-        },
-      },
-    ])
-      .exec()
-      .then((questionDetails) => {
-        res.status(200).send(questionDetails);
-      })
-      .catch((e) => {
-        console.log("Error: ", e);
-        res.status(400).send(error);
-      });
-  });
+router.get('/', async (req, res) => {
+  try {
+      const questions = await Questions.find();
+      res.status(200).json(questions);
+  } catch (error) {
+      console.error('Error fetching questions:', error);
+      res.status(500).json({ message: 'Failed to fetch questions' });
+  }
+});
 
 
 
 
-
-export default router
-//  export {Questions}
+export default router;
 

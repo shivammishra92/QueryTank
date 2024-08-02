@@ -6,7 +6,8 @@ import ReactHtmlParser from "html-react-parser"
 
 
 function AllQuestions({data}) {
-
+  // console.log(data?.body); 
+  //const bodyContent = typeof data?.body === 'string' ? data.body : '';
   function truncate(str, n) {
     return str?.length > n ? str.substr(0, n - 1) + " ..." : str;
   }
@@ -65,11 +66,11 @@ function AllQuestions({data}) {
               
               {/* div for que description */}
               <div>
-                {ReactHtmlParser(truncate(data?.body, 200))}
-                {/* {data?.body ? data?.body : "No body"} */}
+                {ReactHtmlParser(truncate(data.body, 200))}
+                {/* {data?.body ? truncate(data?.body) : "No body"} */}
               </div>
 
-              <div >
+              <div>
               {tags.map((_tag) => (
               <p
                 style={{

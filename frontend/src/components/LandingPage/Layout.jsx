@@ -28,7 +28,7 @@ function Layout() {
   useEffect(() => {
     async function getQuestion() {
       try {
-        const res = await axios.get("http://localhost:5000/api/question");
+        const res = await axios.get("http://localhost:5000/api/question/");
         console.log("Response data:", res.data);
         if (Array.isArray(res.data)) {
           setQuestions(res.data.reverse());
@@ -42,7 +42,7 @@ function Layout() {
     getQuestion();
   }, []);
 
-  console.log(questions)
+  // console.log(questions)
   
 
   return (

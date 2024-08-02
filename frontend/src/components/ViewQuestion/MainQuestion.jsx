@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom'
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import HistoryIcon from '@mui/icons-material/History';
 import { Avatar } from '@mui/material';
+import ReactHtmlParser from "html-react-parser";
 import ReactQuill from 'react-quill'
 //using react-quill's css
 import 'react-quill/dist/quill.snow.css'
@@ -21,7 +22,7 @@ function MainQuestion() {
     let search = window.location.search
     const params = new URLSearchParams(search)
     const id = params.get("q")
-    console.log(id)
+    // console.log(id)
     
     useEffect(()=>{
         async function getQuestionDetails(){
@@ -31,15 +32,22 @@ function MainQuestion() {
                 setQuestionData(res.data)
             })
             .catch((error)=>{
-                console.log("error showing individual question")
+                console.log("error showing individual question",error)
             })
         }
 
         getQuestionDetails()
         
     },[id])
-
+    const bodyContent = typeof questionData?.body === 'string' ? questionData.body : '';
     console.log(questionData);
+
+    // async function getUpdatedAnswer() {
+    //     await axios
+    //       .get(`/api/question/${id}`)
+    //       .then((res) => setQuestionData(res.data[0]))
+    //       .catch((err) => console.log(err));
+    //   }
 
     return (
         <>
@@ -75,7 +83,9 @@ function MainQuestion() {
                             </div>
 
                             <div className="question-answer">
-                                <p>this is question body</p>
+                                {/* <p>this is question body</p> */}
+                                <p>{ReactHtmlParser(bodyContent)}</p>
+
                                 <div className="author">
                                     <small>asked</small>
                                     <div className="author-details">
@@ -107,7 +117,7 @@ function MainQuestion() {
 
                      {/* now the bottom code is for answer tab following the same structure as question tab described above */}
                     <div className="all-questions">
-                        <p>5 Answers</p>
+                        <p>{questionData.answerDetails?.length} answers</p>
                         <div className="all-question-container">
 
                             <div className="all-question-left">
@@ -115,6 +125,10 @@ function MainQuestion() {
                                     <p className="arrow">▲</p>
                                     <p className="arrow">0</p>
                                     <p className="arrow">▼</p>
+                                    {
+                                        questionData.answerDetails?.map((answerD,index) => (
+                                                <p key={index}>{answerD.answer}</p>))
+                                    }
                                     <BookmarkBorderOutlinedIcon />
                                     <HistoryIcon />
                                 </div>

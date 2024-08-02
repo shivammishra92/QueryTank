@@ -1,1 +1,1 @@
-export const DB_NAME="QueryTankDB"
+export const DB_NAME="QueryTankDB";
