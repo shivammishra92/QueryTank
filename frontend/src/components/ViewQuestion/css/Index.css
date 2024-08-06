@@ -92,6 +92,7 @@ pre {
 .title button{
   max-width: fit-content;
 }
+
 .all-questions > p{
      margin-bottom: 20px;
      font-size: 1.2rem;
@@ -105,8 +106,15 @@ pre {
 } */
 .question-answer{
   display: flex;
+  /* justify-content: center; */
   flex-direction: column;
-  
+  margin-left: 3rem;
+}
+.question-answer p {
+  display: flex;
+  margin-bottom: 1rem;
+  justify-content:space-evenly;
+  margin-top: -5rem;
 }
 
 .main-answer {

@@ -40,6 +40,7 @@ function MainQuestion() {
         
     },[id])
     const bodyContent = typeof questionData?.body === 'string' ? questionData.body : '';
+    const ansLen = questionData?.answerDetails?.length;
     console.log(questionData);
 
     // async function getUpdatedAnswer() {
@@ -117,54 +118,33 @@ function MainQuestion() {
 
                      {/* now the bottom code is for answer tab following the same structure as question tab described above */}
                     <div className="all-questions">
-                        <p>{questionData.answerDetails?.length} answers</p>
-                        <div className="all-question-container">
-
-                            <div className="all-question-left">
-                                <div className="side-options">
-                                    <p className="arrow">▲</p>
-                                    <p className="arrow">0</p>
-                                    <p className="arrow">▼</p>
-                                    {
-                                        questionData.answerDetails?.map((answerD,index) => (
-                                                <p key={index}>{answerD.answer}</p>))
-                                    }
-                                    <BookmarkBorderOutlinedIcon />
-                                    <HistoryIcon />
-                                </div>
-                            </div>
-
-                            <div className="question-answer">
-
-                                <div className="author">
-                                    <small>asked</small>
-                                    <div className="author-details">
-                                        <Avatar />
-                                        <p>Author name</p>
+                        <h3>{ansLen} answer</h3>
+                        {
+                            questionData?.answerDetails?.map((ans)=>(
+                            <div key={ans?._id} className="all-question-container">
+                                <div className="all-question-left">
+                                    <div className="side-options">
+                                        <p className="arrow">▲</p>
+                                        <p className="arrow">0</p>
+                                        <p className="arrow">▼</p>
+                                        <BookmarkBorderOutlinedIcon />
+                                        <HistoryIcon />
                                     </div>
                                 </div>
 
-                                <div className="comments">
-                                    <div className="comment">
-                                        <p>this is comment
-                                          <span>Username</span>
-                                          <small>Timestamp</small> 
-                                        </p>
+                                <div className="question-answer">
+                                    <p>{ans?.answer}</p>
+                                    <div className="author">
+                                        <small>asked</small>
+                                        <div className="author-details">
+                                            <Avatar />
+                                            <p>Author name</p>
+                                        </div>
                                     </div>
-                                    <p onClick={() => setShowans(!showans)}>Add a comment</p>
-                                      {/* agar add comment par click ho tabhi comment section show ho */}
-                                        {show && ( <div className="title">
-                                            <textarea placeholder="Add your comment here" rows="5"></textarea>
-                                            <button>Add comment</button>
-                                          </div>
-                                        )}
                                 </div>
-
-                            </div>
-
-
-
-                        </div>
+                            </div>))
+                        }
+                            
                     </div>
 
                 </div>
