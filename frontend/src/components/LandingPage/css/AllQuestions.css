@@ -93,6 +93,11 @@ padding: 2 rem;
     flex-direction: column;
     /* margin-left: auto; */
     margin-top: auto;
+    
+  }
+  .author > small{
+    color: rgb(68, 68, 68);
+    text-align:center;
   }
   .author-details {
     display: flex;

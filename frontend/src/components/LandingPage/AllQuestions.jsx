@@ -88,7 +88,17 @@ function AllQuestions({data}) {
 
         {/* right-bottom part */}
         <div className="author">
-          <small>{new Date(data?.createdAt).toLocaleString()}</small>
+          <small>
+          { new Date(data?.createdAt).toLocaleString([], {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12:false
+          })
+          }
+          </small>
           <div className="author-details">
             <Avatar />
             {/* //for username */}
